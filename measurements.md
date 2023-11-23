@@ -2,3 +2,4 @@
 
 - With data races (10 * 10^7): Has data races, 11.406ms
 - No data races? (10 *10^3): No data races? Sometimes!, 0.327ms
+- Atomic Integer (10 * 10^7): No data races, 266.254ms
