@@ -1,20 +1,17 @@
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class NoDataRaces {
     private static final int n_threads = 10;
     private static final int count_to = 10000000;
 
-    private static Semaphore mutex = new Semaphore(1);
+    private static ReentrantLock mutex = new ReentrantLock();
     private static int counter = 0;
 
     private static void counting ( int up_to ) {
         for (int i=0; i<up_to; i++) {
-            try {
-                mutex.acquire();
-            }
-            catch (InterruptedException ie) {};
+            mutex.lock();
             counter += 1;
-            mutex.release();
+            mutex.unlock();
         }
     }
 
