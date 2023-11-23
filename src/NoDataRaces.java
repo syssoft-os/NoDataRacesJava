@@ -1,6 +1,6 @@
 public class NoDataRaces {
     private static final int n_threads = 10;
-    private static final int count_to = 10000000;
+    private static final int count_to = 1000;
 
     private static int counter = 0;
 
