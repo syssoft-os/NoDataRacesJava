@@ -1,14 +1,20 @@
+import java.util.concurrent.Semaphore;
+
 public class NoDataRaces {
     private static final int n_threads = 10;
     private static final int count_to = 10000000;
 
+    private static Semaphore mutex = new Semaphore(1);
     private static int counter = 0;
 
     private static void counting ( int up_to ) {
         for (int i=0; i<up_to; i++) {
-            synchronized (NoDataRaces.class) {
-                counter += 1;
+            try {
+                mutex.acquire();
             }
+            catch (InterruptedException ie) {};
+            counter += 1;
+            mutex.release();
         }
     }
 

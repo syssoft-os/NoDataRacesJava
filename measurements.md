@@ -5,3 +5,4 @@
 - Atomic Integer (10 * 10^7): No data races, 266.254ms
 - Synchronized method (10 * 10^7): No data races, 7.791ms
 - Synchronized block (10 * 10^7): No data races, 416.747ms
+- Semaphore (10 * 10^7): No data races, 387.154ms
