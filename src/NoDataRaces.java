@@ -5,8 +5,11 @@ public class NoDataRaces {
     private static int counter = 0;
 
     private static void counting ( int up_to ) {
-        for (int i=0; i<up_to; i++)
-            counter += 1;
+        for (int i=0; i<up_to; i++) {
+            synchronized (NoDataRaces.class) {
+                counter += 1;
+            }
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {
