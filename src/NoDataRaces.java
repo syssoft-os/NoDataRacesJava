@@ -6,7 +6,7 @@ public class NoDataRaces {
 
     private static AtomicInteger counter = new AtomicInteger(0);
 
-    private static void counting ( int up_to ) {
+    private static synchronized void counting ( int up_to ) {
         for (int i=0; i<up_to; i++)
             counter.getAndIncrement();
     }
